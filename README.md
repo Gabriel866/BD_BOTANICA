@@ -21,23 +21,6 @@ Campos de la tabla:
     porcentaje_identidad: Porcentaje de relación con el tema.
     sinonimos: Lista de sinónimos son de tipo texto.
 
-Palabras clave insertadas:
-  1.- fotosíntesis — 98.5% — producción de energía, clorofila, luz solar
-  2.- célula vegetal — 97.0% — citoplasma, núcleo, pared celular
-  3.- clorofila — 96.2% — pigmento verde, fotosistema, energía solar
-  4.- flor — 94.7% — pétalos, reproducción, planta
-  5.- semilla — 93.5% — germinación, embrión, fruto
-  6.- raíz — 92.8% — absorción, anclaje, rizoma
-  7.- tallo — 91.6% — soporte, xilema, floema
-  8.- hoja — 90.9% — estoma, cloroplasto, fotosíntesis
-  9.- polinización — 89.8% — abeja, reproducción, floración
-  10- germinación — 88.6% — crecimiento, semilla, humedad
-  11.- planta — 87.4% — organismo vegetal, flora
-  12- ecosistema — 86.2% — hábitat, biodiversidad, bioma
-  13.- botánica — 85.0% — biología vegetal, taxonomía
-  14.- floración — 84.3% — estación, primavera, reproducción
-  15.- xilema — 83.0% — transporte, savia, conducción
-
 
 Código SQL utilizado en pgAdmin 4:
 CREATE TABLE palabras_clave (
