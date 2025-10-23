@@ -1,9 +1,15 @@
 import psycopg2
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+password = os.getenv('PASSWORD')
+
 # Conexión a PostgreSQL
 conn = psycopg2.connect(
     dbname="biologia_botanica",
-    user="postgres",        
-    password="Garoim76",  
+    user="postgres",
+    password=password,  # Se obtiene de .env
     host="localhost",
     port="5432"
 )
