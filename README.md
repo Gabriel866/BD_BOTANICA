@@ -33,14 +33,20 @@ CREATE TABLE palabras_clave (
 Código Python (botanica_bd.py) y es ejecutado en Visual Studio Code:
 
 import psycopg2
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+password = os.getenv('PASSWORD')
+
+# Conexión a PostgreSQL
 conn = psycopg2.connect(
     dbname="biologia_botanica",
     user="postgres",
-    password="Garoim76",
+    password=password,  # Se obtiene de .env
     host="localhost",
     port="5432"
 )
-
 cur = conn.cursor()
 
 # Lista de palabras clave
