@@ -1,17 +1,20 @@
-PROYECTO: BASE DE DATOS DE PALABRAS CLAVE — BIOLOGÍA BOTÁNICA 
-Asignatura: Programación Lógica Funcional 
-Alumno: Gabriel Enrique Lugo López
-Número de control: 22760840
-Tema asignado: Biología – Botánica 
-Fecha de entrega: octubre 2025
+# PROYECTO: BASE DE DATOS DE PALABRAS CLAVE — BIOLOGÍA BOTÁNICA 
 
-Descripción del proyecto:
+### Asignatura: Programación Lógica Funcional 
+
+### Alumno: Gabriel Enrique Lugo López
+
+### Número de control: 22760840
+### Tema asignado: Biología – Botánica 
+### Fecha de entrega: octubre 2025
+
+## Descripción del proyecto:
  Este proyecto consiste en la creación de una base de datos local en PostgreSQL que almacena 
  al menos 15 palabras clave relacionadas con el tema de Biología – Botánica. Cada palabra incluye
  su porcentaje de identidad con el tema y una lista de sinónimos. La base de datos se gestiona 
  desde pgAdmin 4 y se conecta mediante un script en Python ejecutado en Visual Studio Code.
 
- Estructura de la base de datos:
+## Estructura de la base de datos:
  
 Nombre de la base de datos: biologia_botanica
 Nombre de la tabla: palabras_clave
@@ -22,7 +25,7 @@ Campos de la tabla:
     sinonimos: Lista de sinónimos son de tipo texto.
 
 
-Código SQL utilizado en pgAdmin 4:
+## Código SQL utilizado en pgAdmin 4:
 CREATE TABLE palabras_clave (
     id SERIAL PRIMARY KEY,
     palabra VARCHAR(50) NOT NULL,
@@ -30,20 +33,32 @@ CREATE TABLE palabras_clave (
     sinonimos TEXT
 );
 
-Código Python (botanica_bd.py) y es ejecutado en Visual Studio Code:
+## Código Python (botanica_bd.py) y es ejecutado en Visual Studio Code:
 
 import psycopg2
-conn = psycopg2.connect(
-    dbname="biologia_botanica",
-    user="postgres",
-    password="Garoim76",
-    host="localhost",
-    port="5432"
-)
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
+password = os.getenv('PASSWORD')
+
+## Conexión a PostgreSQL
+--  conn = psycopg2.connect(dbname="biologia_botanica",
+
+-- user="postgres",
+
+   -- password=password,  # Se obtiene de .env
+
+   -- host="localhost",
+
+   -- port="5432"
+
+)
 cur = conn.cursor()
 
-# Lista de palabras clave
+
+
+## Lista de palabras clave
 palabras = [
     ("fotosíntesis", 98.5, "producción de energía, clorofila, luz solar"),
     ("célula vegetal", 97.0, "citoplasma, núcleo, pared celular"),
@@ -64,7 +79,7 @@ palabras = [
 
 ]
 
-# Inserción de datos
+## Inserción de datos
 cur.executemany("""
     INSERT INTO palabras_clave (palabra, porcentaje_identidad, sinonimos)
     VALUES (%s, %s, %s);
@@ -73,7 +88,8 @@ cur.executemany("""
 conn.commit()
 print(" Datos insertados correctamente.")
 
-# Verificación
+## Verificación
+
 cur.execute("SELECT * FROM palabras_clave;")
 for fila in cur.fetchall():
     print(fila)
@@ -81,19 +97,19 @@ for fila in cur.fetchall():
 cur.close()
 conn.close()
 
-Requisitos técnicos:
+## Requisitos técnicos:
 * PostgreSQL instalado localmente
 * pgAdmin 4 para gestión visual
 * Python 3.11 o superior
 * Paquete de psycopg2-binary instalado con pip install psycopg2-binary
 
-Instrucciones de ejecución:
+## Instrucciones de ejecución:
 1.	Crear la base de datos biologia_botanica en pgAdmin.
 2.	Crear la tabla palabras_clave usando el código SQL.
 3.	Ejecutar el archivo botanica_bd.py en Visual Studio Code.
 4.	Visualizar los datos en pgAdmin: clic derecho en la tabla → View/Edit Data → All Rows.
 
-Estado final del proyecto: 
+## Estado final del proyecto: 
  Base de datos creada correctamente 
 Tabla estructurada e insertada con 15 palabras clave 
  Conexión Python–PostgreSQL verificada 
